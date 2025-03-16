@@ -1,0 +1,43 @@
+name: Lint & Test
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source
+        uses: actions/checkout@v4
+
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
+
+      - name: Cache shards
+        uses: actions/cache@v4
+        with:
+          path: lib
+          key: ${{ runner.os }}-shards-${{ hashFiles('**/shard.lock') }}
+
+      - name: Install shards
+        run: shards check || shards install
+
+      - name: Cache ameba
+        uses: actions/cache@v4
+        with:
+          path: bin/ameba
+          key: ${{ runner.os }}-ameba-${{ hashFiles('bin/ameba.cr', '**/shard.lock') }}
+
+      - name: Force ameba rebuild if needed
+        run: '[ -f bin/ameba ] || (rm -rf lib/ameba && shards install)'
+
+      - name: Run Ameba
+        run: bin/ameba
+
+      - name: Run tests
+        run: crystal spec
