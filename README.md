@@ -57,4 +57,4 @@ pp! example.call_private_method # => "private 0.5261598848669066"
 
 This library is based on the [Lucky web framework's memoization code][lucky-memoization].
 
-[lucky-memoization]: https://github.com/luckyframework/lucky/blob/v1.3.0/spec/lucky/memoize_spec.cr
+[lucky-memoization]: https://github.com/luckyframework/lucky/blob/v1.3.0/src/lucky/memoizable.cr
