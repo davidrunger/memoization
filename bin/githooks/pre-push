@@ -2,6 +2,6 @@
 
 set -euo pipefail # exit on any error, don't allow undefined variables, pipes don't swallow errors
 
-lint gitleaks
+lint secrets
 
 background-and-notify lint newlines
