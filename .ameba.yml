@@ -1,0 +1,3 @@
+# Assignments in memoized method bodies are parsed as call arguments.
+Lint/AssignmentInCallArgument:
+  Enabled: false

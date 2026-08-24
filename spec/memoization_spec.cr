@@ -116,9 +116,9 @@ describe "memoization" do
   it "works with predicate methods" do
     object = ObjectWithMemoizedMethods.new
 
-    object.method_4?.should eq(true)
-    object.method_4?.should eq(true)
-    object.method_4?.should eq(true)
+    object.method_4?.should be_true
+    object.method_4?.should be_true
+    object.method_4?.should be_true
     object.times_method_4_called.should eq(1)
   end
 
@@ -134,9 +134,9 @@ describe "memoization" do
   it "calls uncached with predicate and bang methods" do
     object = ObjectWithMemoizedMethods.new
 
-    object.method_4__uncached?.should eq(true)
-    object.method_4__uncached?.should eq(true)
-    object.method_4__uncached?.should eq(true)
+    object.method_4__uncached?.should be_true
+    object.method_4__uncached?.should be_true
+    object.method_4__uncached?.should be_true
     object.times_method_4_called.should eq(3)
 
     object.method_5__uncached!.should eq("Boom!")
