@@ -37,7 +37,7 @@ jobs:
           key: ${{ runner.os }}-ameba-${{ hashFiles('bin/ameba.cr', '**/shard.lock') }}
 
       - name: Force ameba rebuild if needed
-        run: '[ -f bin/ameba ] || (rm -rf lib/ameba && shards install)'
+        run: '[ -f bin/ameba ] || crystal build -o bin/ameba bin/ameba.cr'
 
       - name: Run Ameba
         run: bin/ameba

@@ -17,9 +17,9 @@ module Memoization
     %}
 
     {% if method_def.args.empty? %}
-      @__memoized_{{safe_method_name}} : {{ method_def.return_type }} | UninitializedMemo = UninitializedMemo::INSTANCE
+      @__memoized_{{ safe_method_name }} : {{ method_def.return_type }} | UninitializedMemo = UninitializedMemo::INSTANCE
     {% else %}
-      @__memoized_{{safe_method_name}} : Hash(
+      @__memoized_{{ safe_method_name }} : Hash(
         Tuple(
           {% for arg in method_def.args %}
             {{ arg.restriction }},
@@ -61,7 +61,7 @@ module Memoization
         else
           @__memoized_{{ safe_method_name }}[key] = {{ safe_method_name }}__uncached{% if special_ending %}{{ special_ending.id }}{% end %}(
             {% for arg in method_def.args %}
-              {{arg.internal_name}},
+              {{ arg.internal_name }},
             {% end %}
           )
         end
@@ -86,7 +86,7 @@ module Memoization
     ) : {{ method_def.return_type }}
       {{ safe_method_name }}__tuple_cached{% if special_ending %}{{ special_ending.id }}{% end %}(
         {% for arg in method_def.args %}
-          {{arg.internal_name}},
+          {{ arg.internal_name }},
         {% end %}
       )
     end

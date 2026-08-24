@@ -4,5 +4,6 @@ version: 0.0.1
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba
+    commit: fcbd5703c50b47a5f280a11ab1c3416f5f3a9ea9
 
 license: MIT
