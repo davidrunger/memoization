@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install Crystal
-        uses: crystal-lang/install-crystal@46e48b6238ee23b1a6ef08ec39f12fb234676006 # v1.9.3
+        uses: crystal-lang/install-crystal@19ef8675e43f44f0d38b79f732df7ad4b6b669ed # v1.9.4
 
       - name: Cache shards
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
